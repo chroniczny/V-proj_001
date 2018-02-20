@@ -8,8 +8,27 @@
 </head>
 <body>
 <div id="app">
+    <h1 v-once>{{title}}</h1>
+
     <input type="text" v-on:input="changeTitle">
     <p>{{title}}</p>
+    <p>{{sayHello()}} - <a v-bind:href="link">Google</a></p>
+    <p>{{sayTitle()}}</p>
+    <hr>
+    <p v-html="finishedLink"></p>
+    <hr>
+    <button v-on:click="increase(2, $event)" >Click me 2-step</button>
+    <button v-on:click="counter++" >Click me for 1-step</button>
+    <p>{{counter}}</p>
+    <p>{{counter * 2 > 10 ? 'Grater than 10' : 'Smaller than 10'}}</p>
+    <p v-on:mousemove="updateCoordinates" >
+        Coordinates: {{x}} / {{y}}
+        - <span v-on:mousemove.stop="" >DEAD SPOT</span>
+    </p>
+    <hr>
+    <input type="text" v-on:keyup.enter.space="alertMe" v-model="name" >
+    <p>{{name}}</p>
+
 </div>
 <script src="script_00.js"></script>
 </body>
