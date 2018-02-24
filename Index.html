@@ -1,88 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <script src="vue.js"></script>
-    <title>V-proj_001</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <div id="app">
-    <h1 v-once>{{title}}</h1>
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                     :style="{'width': scoreYou + '%'}">{{ scoreYou }}
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                     :style="{'width': scoreMonster + '%'}">{{ scoreMonster }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row controls" v-show="!gameOn">
+        <div class="small-12 columns">
+            <button id="start-game" @click="startGame">START NEW GAME</button>
+        </div>
+    </section>
+    <section class="row controls" v-show="gameOn">
+        <div class="small-12 columns">
+            <button id="attack" @click="attackHim">ATTACK</button>
+            <button id="special-attack" @click="specialAttackHim">SPECIAL ATTACK</button>
+            <button id="heal" @click="healMe" >HEAL</button>
+            <button id="give-up" @click="endGame">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log">
+        <div class="small-12 columns">
+            <ul>
+                <li>
 
-    <input type="text" v-on:input="changeTitle">
-    <p>{{title}}</p>
-    <p>{{sayHello()}} - <a v-bind:href="link">Google</a></p>
-    <p>{{sayTitle()}}</p>
-    <hr>
-    <p v-html="finishedLink"></p>
-    <hr>
-    <button v-on:click="increase1(2, $event)">Click me 2-step</button>
-    <button v-on:click="counter++">Click me for 1-step</button>
-    <p>{{ counter1 }}</p>
-    <p>{{ counter1 * 2 > 10 ? 'Grater than 10' : 'Smaller than 10' }}</p>
-    <p v-on:mousemove="updateCoordinates">
-        Coordinates: {{x}} / {{y}}
-        - <span v-on:mousemove.stop="">DEAD SPOT</span>
-    </p>
-    <hr>
-    <h2>Alerts</h2>
-    <input type="text" v-on:keyup.enter.space="alertMe" v-model="name">
-    <p>{{ name }}</p>
-    <hr>
-    <h2>22 methods </h2>
-    <p>{{ result1() }}</p>
-    <hr>
-    <h2>Computed properties</h2>
-    <button v-on:click="counter++">Increasing</button>
-    <button v-on:click="counter--">Decreasing</button>
-    <button v-on:click="secondCounter++">Increase Second</button>
-    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
-    <p>Result: {{ result() }} | {{ output }}</p>
-    <hr>
-    <h1>v-on -> @ and v-bind -> : </h1>
-
-    <input type="text" @input="changeTitle">
-    <p>{{title}}</p>
-    <p>{{sayHello()}} - <a :href="link">Google</a></p>
-    <p>{{sayTitle()}}</p>
-    <hr>
-    <h2>attaching css classes </h2>
-    <div class="demo"
-         @click="attachRed = !attachRed"
-         :class="{ red: attachRed, blue: !attachRed }">
-        classes added one by one <br>
-        on-click here
-    </div>
-    <div class="demo"
-         :class="{ red: attachRed }">
-        yeah
-    </div>
-    <div class="demo"
-         :class="divClasses">computed obj classes
-    </div>
-    <h2> dynamic styling </h2>
-    <div class="demo"
-         :class="color">
-        from input directly by name of class
-    </div>
-    <div class="demo"
-         :class="[color, {red: attachRed}]">
-        from input: directly and obj [...]
-    </div>
-    <hr>
-    <input type="text" v-model="color">
-    <hr>
-    <h2>css styling - but not through classes</h2>
-    <div class="demo" :style="{ 'background-color': color }">(1)'background-color': color</div>
-    <div class="demo" :style="{ backgroundColor: color }">(1) backgroundColor: color</div>
-    <div class="demo" :style="myStyle" >(2) myStyle</div>
-    <div class="demo" :style="[myStyle, {height: 1.5*width + 'px'}]">(3) myStyle and 1.5w height</div>
-    <br>
-    <input type="text" v-model="color"> for color
-    <br>
-    <input type="text" v-model="width"> for width
+                </li>
+            </ul>
+        </div>
+    </section>
 </div>
-<script src="script_00.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
