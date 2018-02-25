@@ -36,14 +36,14 @@
             <button id="attack" @click="attackHim">ATTACK</button>
             <button id="special-attack" @click="specialAttackHim">SPECIAL ATTACK</button>
             <button id="heal" @click="healMe" >HEAL</button>
-            <button id="give-up" @click="endGame">GIVE UP</button>
+            <button id="give-up" @click="resetGame">GIVE UP</button>
         </div>
     </section>
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="log in logs" >
+                    <div v-for="(value, key) in log" :class="key+'-turn'">{{ key }} {{ value[2]}} {{ value[1]}} with {{ value[0] }} </div>
                 </li>
             </ul>
         </div>
