@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--<script src="vue.js"></script>-->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>V-proj_001</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+<div id="app1">
+  <h1 ref="heading">{{ title }}</h1>
+  <button v-on:click="show" ref="myButton">Show Paragraph</button>
+  <!--<hello></hello>-->
+  <p v-if="showParagraph">This is not always visible</p>
+</div>
+<div id="app2">
+  <h1 ref="heading">{{ title }}</h1>
+  <button v-on:click="updateTitle">Show Paragraph</button>
+  <p v-if="showParagraph">This is not always visible</p>
+  <hr>
+  <!--<hello></hello>-->
+</div>
+
+<div id="app3">
+
+</div>
+
+<script src="app005.js"></script>
+</body>
